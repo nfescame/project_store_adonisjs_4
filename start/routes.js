@@ -18,5 +18,13 @@ const Route = use("Route");
 
 Route.on("/").render("welcome");
 
-Route.post("/register", "AuthController.register").prefix("api");
-Route.post("/authenticate", "AuthController.authenticate").prefix("api");
+Route.group(() => {
+  Route.post("/register", "AuthController.register");
+  Route.post("/authenticate", "AuthController.authenticate");
+}).prefix("api");
+
+Route.group(() => {
+  Route.resource("clients", "ClientController").apiOnly();
+})
+  .prefix("api")
+  .middleware("auth");
