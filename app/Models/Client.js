@@ -7,6 +7,12 @@ class Client extends Model {
   user() {
     return this.belongsTo("App/Models/User");
   }
+  address() {
+    return this.hasOne("App/Models/Address");
+  }
+  phone() {
+    return this.hasMany("App/Models/Phone");
+  }
 }
 
 module.exports = Client;
