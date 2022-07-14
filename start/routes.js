@@ -25,6 +25,7 @@ Route.group(() => {
 
 Route.group(() => {
   Route.resource("clients", "ClientController").apiOnly();
+  Route.resource("products", "ProductController").apiOnly();
 })
   .prefix("api")
   .middleware("auth");
